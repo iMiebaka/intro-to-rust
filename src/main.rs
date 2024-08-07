@@ -21,7 +21,8 @@ fn main() {
     let va:i32 = basic::let_sum_number(1, 2);
     println!("{} is the sum", va);
     utils::metal::display_metal_info();
-    
+    utils::solid::sold_guy();
+
     println!("The number is: {}", width);
     let mut writer = BufWriter::new(stdout.lock());
     say(&message, width, &mut writer).unwrap();
