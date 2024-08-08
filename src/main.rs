@@ -1,7 +1,5 @@
-use ferris_says::say; // from the previous step
-use std::io::{stdout, BufWriter};
-mod basic;
-mod utils;
+mod basics;
+mod loops;
 
 #[cfg(test)]
 mod tests {
@@ -9,21 +7,32 @@ mod tests {
 
     #[test]
     fn it_sum_number() {
-        let sum = basic::let_sum_number(12, 5);
+        let sum: i8 = basics::variables::let_sum_number(12, 5);
         assert_eq!(sum, 17);
+    }
+
+    #[test]
+    fn it_test_welcome() {
+        assert_eq!(basics::variables::greeting(), "I'm ready to learn Rust!");
+        assert_eq!(basics::variables::greet("Mi"), "Hello, Mi!");
+        assert_eq!(11, 1 + 2 * 5);
+    }
+
+    #[test]
+    fn control_flow() {
+        let res = basics::control_flow::if_statement(3);
+        assert_eq!(res, "smaller");
+        let res = basics::control_flow::if_statement(5);
+        assert_eq!(res, "bigger");
+        let res = basics::control_flow::if_else_expression();
+        assert_eq!(res, "smaller than 5");
     }
 }
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Welcome Miebaka");
-    let width = message.chars().count();
-    let va:i32 = basic::let_sum_number(1, 2);
-    println!("{} is the sum", va);
-    utils::metal::display_metal_info();
-    utils::solid::sold_guy();
+    // Basic DT
+    // basics::main();
+    loops::main()
 
-    println!("The number is: {}", width);
-    let mut writer = BufWriter::new(stdout.lock());
-    say(&message, width, &mut writer).unwrap();
+
 }
